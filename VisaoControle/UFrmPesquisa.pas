@@ -163,6 +163,7 @@ begin
            A[I] := W;
       end;
 
+      W := 0;
       for I := 0 to VisibleColumnsCount - 1 do
         VisibleColumns[I].Width := A[I] + CNT_ADD + W;
 

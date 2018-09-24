@@ -33,9 +33,9 @@ object dmEntra21: TdmEntra21
       'MaxBlobSize=-1'
       'DriverName=MySQL'
       'HostName=localhost'
-      'Database=database_name'
-      'User_Name=user'
-      'Password=password'
+      'Database=peoplehelp'
+      'User_Name=delphi'
+      'Password=delphi'
       'ServerCharSet='
       'BlobSize=-1'
       'ErrorResourceFile='
@@ -43,6 +43,7 @@ object dmEntra21: TdmEntra21
       'Compressed=False'
       'Encrypted=False'
       'ConnectTimeout=60')
+    Connected = True
     Left = 32
     Top = 24
   end

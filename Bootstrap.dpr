@@ -2,7 +2,9 @@ program Bootstrap;
 
 uses
   Forms,
-  UFrmPrincipal in 'VisaoControle\UFrmPrincipal.pas' {FrmPrincipal},
+  Controls,
+  SysUtils,
+  UFrmLogin in 'VisaoControle\UFrmLogin.pas' {FrmLogin},
   UFrmCRUD in 'VisaoControle\UFrmCRUD.pas' {FrmCRUD},
   UUtilitarios in 'Modelo\UUtilitarios.pas',
   UMensagens in 'Modelo\UMensagens.pas',
@@ -13,13 +15,33 @@ uses
   UEntidade in 'Modelo\Persistencia\UEntidade.pas',
   URepositorio in 'Modelo\Persistencia\URepositorio.pas',
   URepositorioDB in 'Modelo\Persistencia\URepositorioDB.pas',
-  URegraCRUD in 'Modelo\Regra\URegraCRUD.pas';
+  URegraCRUD in 'Modelo\Regra\URegraCRUD.pas',
+  UFrmRegistrar in 'VisaoControle\UFrmRegistrar.pas' {FrmRegistrar},
+  UFrmPrincipal in 'VisaoControle\UFrmPrincipal.pas' {FrmPrincipal},
+  UFrmSplashScreen in 'VisaoControle\UFrmSplashScreen.pas' {FrmSplashScreen},
+  URepositorioUsuario in 'Modelo\Persistencia\URepositorioUsuario.pas',
+  UUsuario in 'Modelo\Persistencia\UUsuario.pas',
+  URegraCRUDUsuario in 'Modelo\Regra\URegraCRUDUsuario.pas',
+  UUsuarioLogado in 'Modelo\UUsuarioLogado.pas';
 
 {$R *.res}
 
+var
+  FrmSplashScreen: TFrmSplashScreen;
 begin
   Application.Initialize;
-  Application.CreateForm(TFrmPrincipal, FrmPrincipal);
   Application.CreateForm(TdmEntra21, dmEntra21);
-  Application.Run;
+
+  FrmSplashScreen := TFrmSplashScreen.Create(Application);
+  if FrmSplashScreen.ShowModal = mrOk then
+  begin
+    FreeAndNil(FrmSplashScreen);
+    Application.CreateForm(TFrmPrincipal, FrmPrincipal);
+    Application.Run;
+  end
+  else
+  begin
+    Application.Run;
+    Application.Terminate;
+  end;
 end.

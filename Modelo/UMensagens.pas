@@ -2,6 +2,9 @@ unit UMensagens;
 
 interface
 
+type
+  TTipordCadastro = (tdPrestador
+                    , tdUsuário);
 resourcestring
   //Geral
   STR_ATENCAO                 = 'Atenção';
@@ -27,6 +30,13 @@ resourcestring
   STR_VALIDA_TRANSACAO_ATIVA      = 'Operação abortada! Motivo: Para realizar esta operação é necessário ter uma transação ativa.';
   STR_ABORTAR                     = 'abortar';
   STR_FINALIZAR                   = 'finalizar';
+
+  //Usuario
+  STR_USUARIO = 'Usuário';
+  STR_USUARIO_OU_SENHA_SAO_INVALIDOS = 'Usuário ou senha informados são inválidos';
+  STR_SENHA_ATUAL_NAO_CONFERE        = 'Senha atual não confere';
+  STR_USUARIO_NOME_NAO_INFORMADO     = 'Nome do usuário não foi informado';
+  STR_SENHAS_NAO_CONFEREM            = 'Senhas informadas não conferem';
 
 implementation
 

@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Menus
-  , StdCtrls, ComCtrls
+  , StdCtrls, ComCtrls, Vcl.Imaging.pngimage, Vcl.ExtCtrls
   ;
 
 type
@@ -13,6 +13,8 @@ type
     mmPrincipal: TMainMenu;
     miSair: TMenuItem;
     sbPrincipal: TStatusBar;
+    miRegistrar: TMenuItem;
+    miLogin: TMenuItem;
     procedure miSairClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
@@ -29,6 +31,8 @@ implementation
 uses
     UDM
   , DB
+  , UFrmRegistrar
+  , UFrmLogin
   ;
 
 {$R *.dfm}

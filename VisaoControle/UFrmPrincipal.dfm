@@ -1,9 +1,9 @@
 object FrmPrincipal: TFrmPrincipal
   Left = 245
   Top = 191
-  Caption = 'Bootstrap'
-  ClientHeight = 345
-  ClientWidth = 693
+  Caption = 'People Help'
+  ClientHeight = 382
+  ClientWidth = 746
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,14 +13,15 @@ object FrmPrincipal: TFrmPrincipal
   FormStyle = fsMDIForm
   Menu = mmPrincipal
   OldCreateOrder = False
+  Position = poMainFormCenter
   WindowState = wsMaximized
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object sbPrincipal: TStatusBar
     Left = 0
-    Top = 326
-    Width = 693
+    Top = 363
+    Width = 746
     Height = 19
     Panels = <
       item
@@ -30,6 +31,12 @@ object FrmPrincipal: TFrmPrincipal
   object mmPrincipal: TMainMenu
     Left = 640
     Top = 8
+    object miLogin: TMenuItem
+      Caption = 'Login'
+    end
+    object miRegistrar: TMenuItem
+      Caption = 'Registrar'
+    end
     object miSair: TMenuItem
       Caption = '&Sair'
       OnClick = miSairClick
