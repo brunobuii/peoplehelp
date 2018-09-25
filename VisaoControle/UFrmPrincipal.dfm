@@ -31,11 +31,8 @@ object FrmPrincipal: TFrmPrincipal
   object mmPrincipal: TMainMenu
     Left = 640
     Top = 8
-    object miLogin: TMenuItem
-      Caption = 'Login'
-    end
-    object miRegistrar: TMenuItem
-      Caption = 'Registrar'
+    object miServico: TMenuItem
+      Caption = 'Servi'#231'os'
     end
     object miSair: TMenuItem
       Caption = '&Sair'

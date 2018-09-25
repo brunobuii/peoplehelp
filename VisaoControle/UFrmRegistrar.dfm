@@ -3,7 +3,7 @@ object FrmRegistrar: TFrmRegistrar
   Top = 0
   Caption = 'Registrar'
   ClientHeight = 476
-  ClientWidth = 760
+  ClientWidth = 803
   Color = clBtnFace
   DefaultMonitor = dmMainForm
   Font.Charset = DEFAULT_CHARSET
@@ -13,18 +13,19 @@ object FrmRegistrar: TFrmRegistrar
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 13
   object PnTopo: TPanel
     Left = 0
     Top = 0
-    Width = 760
+    Width = 803
     Height = 129
     Align = alTop
     Color = clMedGray
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 678
     object Image1: TImage
       Left = 64
       Top = 0
@@ -6631,14 +6632,12 @@ object FrmRegistrar: TFrmRegistrar
   object PnRodape: TPanel
     Left = 0
     Top = 428
-    Width = 760
+    Width = 803
     Height = 48
     Align = alBottom
     TabOrder = 1
-    ExplicitTop = 389
-    ExplicitWidth = 678
     DesignSize = (
-      760
+      803
       48)
     object btnNovo: TBitBtn
       Left = 4
@@ -6672,7 +6671,7 @@ object FrmRegistrar: TFrmRegistrar
       OnClick = btnNovoClick
     end
     object btnGravar: TBitBtn
-      Left = 289
+      Left = 449
       Top = 6
       Width = 115
       Height = 35
@@ -6702,42 +6701,9 @@ object FrmRegistrar: TFrmRegistrar
       TabOrder = 1
       Visible = False
       OnClick = btnGravarClick
-      ExplicitLeft = 207
-    end
-    object btnExcluir: TBitBtn
-      Left = 406
-      Top = 6
-      Width = 115
-      Height = 35
-      Cursor = crHandPoint
-      Anchors = [akRight, akBottom]
-      Caption = '&Excluir'
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      Glyph.Data = {
-        76010000424D7601000000000000760000002800000020000000100000000100
-        04000000000000010000120B0000120B00001000000000000000000000000000
-        800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
-        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333000000000
-        3333333777777777F3333330F777777033333337F3F3F3F7F3333330F0808070
-        33333337F7F7F7F7F3333330F080707033333337F7F7F7F7F3333330F0808070
-        33333337F7F7F7F7F3333330F080707033333337F7F7F7F7F3333330F0808070
-        333333F7F7F7F7F7F3F33030F080707030333737F7F7F7F7F7333300F0808070
-        03333377F7F7F7F773333330F080707033333337F7F7F7F7F333333070707070
-        33333337F7F7F7F7FF3333000000000003333377777777777F33330F88877777
-        0333337FFFFFFFFF7F3333000000000003333377777777777333333330777033
-        3333333337FFF7F3333333333000003333333333377777333333}
-      NumGlyphs = 2
-      ParentFont = False
-      TabOrder = 2
-      Visible = False
-      ExplicitLeft = 324
     end
     object btnLimpar: TBitBtn
-      Left = 523
+      Left = 566
       Top = 6
       Width = 115
       Height = 35
@@ -6764,13 +6730,12 @@ object FrmRegistrar: TFrmRegistrar
         50BB555555555555575F555555555555550B5555555555555575}
       NumGlyphs = 2
       ParentFont = False
-      TabOrder = 3
+      TabOrder = 2
       Visible = False
       OnClick = btnLimparClick
-      ExplicitLeft = 441
     end
     object btnSair: TBitBtn
-      Left = 640
+      Left = 683
       Top = 6
       Width = 115
       Height = 35
@@ -6797,9 +6762,8 @@ object FrmRegistrar: TFrmRegistrar
         0333337FFFFFFFFF7F3333000000000003333377777777777333}
       NumGlyphs = 2
       ParentFont = False
-      TabOrder = 4
+      TabOrder = 3
       OnClick = btnSairClick
-      ExplicitLeft = 558
     end
   end
   object PnEsquerdo: TPanel
@@ -6809,30 +6773,45 @@ object FrmRegistrar: TFrmRegistrar
     Height = 299
     Align = alLeft
     TabOrder = 2
-    ExplicitHeight = 260
-    object rdCadastro: TRadioGroup
-      Left = 24
-      Top = 62
-      Width = 137
-      Height = 115
-      Caption = 'Cadastro'
-      Ctl3D = True
-      Items.Strings = (
-        'Prestador'
-        'Usu'#225'rio')
-      ParentCtl3D = False
+    object cbxPrestador: TCheckBox
+      Left = 16
+      Top = 21
+      Width = 121
+      Height = 17
+      Caption = 'Prestador'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
       TabOrder = 0
+      Visible = False
+    end
+    object cbxCliente: TCheckBox
+      Left = 16
+      Top = 169
+      Width = 121
+      Height = 17
+      TabStop = False
+      Caption = 'Usu'#225'rio'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 1
+      Visible = False
     end
   end
   object PnDireito: TPanel
     Left = 193
     Top = 129
-    Width = 567
+    Width = 610
     Height = 299
     Align = alClient
     TabOrder = 3
-    ExplicitWidth = 485
-    ExplicitHeight = 260
     object lbNome: TLabel
       Left = 28
       Top = 14
@@ -6987,8 +6966,8 @@ object FrmRegistrar: TFrmRegistrar
       ParentFont = False
     end
     object lbConfirmacaoSenha: TLabel
-      Left = 299
-      Top = 239
+      Left = 28
+      Top = 267
       Width = 119
       Height = 18
       Align = alCustom
@@ -7004,74 +6983,86 @@ object FrmRegistrar: TFrmRegistrar
       ParentFont = False
     end
     object edNome: TEdit
-      Left = 99
+      Left = 153
       Top = 17
       Width = 182
       Height = 21
       TabOrder = 0
+      Visible = False
     end
     object edCPF: TEdit
-      Left = 99
+      Left = 153
       Top = 44
       Width = 182
       Height = 21
       TabOrder = 1
+      Visible = False
     end
     object edEmail: TEdit
-      Left = 99
+      Left = 153
       Top = 72
       Width = 182
       Height = 21
       TabOrder = 2
+      Visible = False
     end
     object edRua: TEdit
-      Left = 99
+      Left = 153
       Top = 100
       Width = 182
       Height = 21
       TabOrder = 3
+      Visible = False
     end
     object edCidade: TEdit
-      Left = 99
+      Left = 153
       Top = 128
       Width = 182
       Height = 21
       TabOrder = 4
+      Visible = False
     end
     object edNumero: TEdit
-      Left = 99
+      Left = 153
       Top = 156
       Width = 182
       Height = 21
       TabOrder = 5
+      Visible = False
     end
     object edTelefone: TEdit
-      Left = 99
+      Left = 153
       Top = 184
       Width = 182
       Height = 21
       TabOrder = 6
+      Visible = False
     end
     object edServico: TEdit
-      Left = 99
+      Left = 153
       Top = 212
       Width = 182
       Height = 21
       TabOrder = 7
+      Visible = False
     end
     object edSenha: TEdit
-      Left = 99
+      Left = 153
       Top = 239
       Width = 182
       Height = 21
+      PasswordChar = '*'
       TabOrder = 8
+      Visible = False
     end
     object edConfirmacaoSenha: TEdit
-      Left = 424
-      Top = 239
+      Left = 153
+      Top = 267
       Width = 182
       Height = 21
+      PasswordChar = '*'
       TabOrder = 9
+      Visible = False
     end
   end
 end

@@ -13,8 +13,7 @@ type
     mmPrincipal: TMainMenu;
     miSair: TMenuItem;
     sbPrincipal: TStatusBar;
-    miRegistrar: TMenuItem;
-    miLogin: TMenuItem;
+    miServico: TMenuItem;
     procedure miSairClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
