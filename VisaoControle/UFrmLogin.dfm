@@ -2,8 +2,8 @@ object FrmLogin: TFrmLogin
   Left = 245
   Top = 191
   Caption = 'Login'
-  ClientHeight = 401
-  ClientWidth = 746
+  ClientHeight = 367
+  ClientWidth = 609
   Color = clBtnFace
   DefaultMonitor = dmMainForm
   Font.Charset = DEFAULT_CHARSET
@@ -12,27 +12,29 @@ object FrmLogin: TFrmLogin
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
-  Position = poScreenCenter
+  Position = poDesktopCenter
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object sbPrincipal: TStatusBar
     Left = 0
-    Top = 382
-    Width = 746
+    Top = 348
+    Width = 609
     Height = 19
     Panels = <
       item
         Width = 50
       end>
-    ExplicitTop = 363
+    ExplicitTop = 382
+    ExplicitWidth = 746
   end
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 746
-    Height = 382
+    Width = 609
+    Height = 348
     Align = alClient
+    AutoSize = True
     BiDiMode = bdLeftToRight
     Color = clSkyBlue
     ParentBiDiMode = False
@@ -41,11 +43,12 @@ object FrmLogin: TFrmLogin
     ShowHint = False
     TabOrder = 1
     VerticalAlignment = taAlignBottom
-    ExplicitHeight = 363
+    ExplicitWidth = 746
+    ExplicitHeight = 382
     object Image1: TImage
-      Left = 72
-      Top = 25
-      Width = 145
+      Left = 32
+      Top = 17
+      Width = 177
       Height = 144
       Align = alCustom
       Picture.Data = {
@@ -5131,8 +5134,8 @@ object FrmLogin: TFrmLogin
       Proportional = True
     end
     object Image4: TImage
-      Left = 254
-      Top = 39
+      Left = 179
+      Top = 26
       Width = 385
       Height = 105
       Picture.Data = {
@@ -5888,8 +5891,8 @@ object FrmLogin: TFrmLogin
       Proportional = True
     end
     object Image5: TImage
-      Left = 250
-      Top = 40
+      Left = 175
+      Top = 27
       Width = 385
       Height = 105
       Align = alCustom
@@ -6645,9 +6648,9 @@ object FrmLogin: TFrmLogin
       Proportional = True
     end
     object imEntrar: TImage
-      Left = 278
-      Top = 296
-      Width = 203
+      Left = 231
+      Top = 274
+      Width = 163
       Height = 53
       Picture.Data = {
         0954506E67496D61676589504E470D0A1A0A0000000D49484452000004180000
@@ -7792,8 +7795,8 @@ object FrmLogin: TFrmLogin
       OnClick = imEntrarClick
     end
     object Label1: TLabel
-      Left = 116
-      Top = 242
+      Left = 37
+      Top = 218
       Width = 101
       Height = 37
       Caption = 'Senha:'
@@ -7805,8 +7808,8 @@ object FrmLogin: TFrmLogin
       ParentFont = False
     end
     object lbLogin: TLabel
-      Left = 116
-      Top = 181
+      Left = 37
+      Top = 157
       Width = 89
       Height = 37
       Caption = 'Email:'
@@ -7818,8 +7821,8 @@ object FrmLogin: TFrmLogin
       ParentFont = False
     end
     object edLoginEmail: TEdit
-      Left = 250
-      Top = 181
+      Left = 171
+      Top = 157
       Width = 389
       Height = 37
       Font.Charset = DEFAULT_CHARSET
@@ -7831,8 +7834,8 @@ object FrmLogin: TFrmLogin
       TabOrder = 0
     end
     object edLoginSenha: TEdit
-      Left = 250
-      Top = 242
+      Left = 171
+      Top = 218
       Width = 389
       Height = 37
       Font.Charset = DEFAULT_CHARSET

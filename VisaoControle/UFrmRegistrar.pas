@@ -51,7 +51,6 @@ type
     procedure FormDestroy(Sender: TObject);
   private
     FRegraCRUDUsuario: TRegraCRUDUsuario;
-    FUSUARIO: TUSUARIO;
   end;
 
 implementation
@@ -80,6 +79,8 @@ begin
     FRegraCRUDUsuario.Insere(USUARIO);
     TUsuarioLogado.RealizaLogin(edEmail.Text, edSenha.Text);
     ModalResult := mrOK;
+    ShowMessage('Cadastro Realizado com Sucesso! Seja Bem Vindo!'+ USUARIO.NOME);
+
     CloseModal;
   except
     on E: Exception do

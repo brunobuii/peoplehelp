@@ -22,7 +22,8 @@ uses
   URepositorioUsuario in 'Modelo\Persistencia\URepositorioUsuario.pas',
   UUsuario in 'Modelo\Persistencia\UUsuario.pas',
   URegraCRUDUsuario in 'Modelo\Regra\URegraCRUDUsuario.pas',
-  UUsuarioLogado in 'Modelo\UUsuarioLogado.pas';
+  UUsuarioLogado in 'Modelo\UUsuarioLogado.pas',
+  UFrmServico in 'VisaoControle\UFrmServico.pas' {FrmServico};
 
 {$R *.res}
 
@@ -31,7 +32,6 @@ var
 begin
   Application.Initialize;
   Application.CreateForm(TdmEntra21, dmEntra21);
-
   FrmSplashScreen := TFrmSplashScreen.Create(Application);
   if FrmSplashScreen.ShowModal = mrOk then
   begin
