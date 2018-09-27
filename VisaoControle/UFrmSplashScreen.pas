@@ -9,11 +9,11 @@ uses
 type
   TFrmSplashScreen = class(TForm)
     Panel1: TPanel;
-    Image1: TImage;
     ImAcessar: TImage;
     ImRegistrar: TImage;
     Image4: TImage;
     Image5: TImage;
+    imgLogo: TImage;
     procedure ImRegistrarClick(Sender: TObject);
     procedure ImAcessarClick(Sender: TObject);
   private

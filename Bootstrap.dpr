@@ -23,7 +23,9 @@ uses
   UUsuario in 'Modelo\Persistencia\UUsuario.pas',
   URegraCRUDUsuario in 'Modelo\Regra\URegraCRUDUsuario.pas',
   UUsuarioLogado in 'Modelo\UUsuarioLogado.pas',
-  UFrmServico in 'VisaoControle\UFrmServico.pas' {FrmServico};
+  UFrmServico in 'VisaoControle\UFrmServico.pas' {FrmServico},
+  UFrmMensagem in 'VisaoControle\UFrmMensagem.pas' {FrmMensagem},
+  UFrmAgendamento in 'VisaoControle\UFrmAgendamento.pas' {FrmAgendamento};
 
 {$R *.res}
 
