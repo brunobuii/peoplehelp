@@ -14,6 +14,8 @@ type
     EMAIL: String;
     SENHA: String;
     RUA: String;
+    SEXO: Integer;
+    BAIRRO: String;
     CIDADE: String;
     NUMERO: Integer;
     TELEFONE: String;
@@ -29,6 +31,8 @@ const
   FLD_USUARIO_SENHA             = 'SENHA';
   FLD_USUARIO_RUA               = 'RUA';
   FLD_USUARIO_CIDADE            = 'CIDADE';
+  FLD_USUARIO_SEXO            = 'SEXO';
+  FLD_USUARIO_BAIRRO            = 'BAIRRO';
   FLD_USUARIO_NUMERO            = 'NUMERO';
   FLD_USUARIO_TELEFONE          = 'TELEFONE';
   FLD_USUARIO_CLIENTE           = 'CLIENTE';

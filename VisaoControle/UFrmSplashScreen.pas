@@ -4,16 +4,15 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.pngimage, Vcl.ExtCtrls;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.pngimage, Vcl.ExtCtrls,
+  Vcl.Imaging.jpeg;
 
 type
   TFrmSplashScreen = class(TForm)
-    Panel1: TPanel;
-    ImAcessar: TImage;
-    ImRegistrar: TImage;
-    Image4: TImage;
-    Image5: TImage;
     imgLogo: TImage;
+    imgFundo: TImage;
+    imacessar: TImage;
+    imRegistrar: TImage;
     procedure ImRegistrarClick(Sender: TObject);
     procedure ImAcessarClick(Sender: TObject);
   private

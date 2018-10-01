@@ -4,32 +4,37 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Menus, StdCtrls, ComCtrls, Vcl.Imaging.pngimage, Vcl.ExtCtrls;
+  Dialogs, Menus, StdCtrls, ComCtrls, Vcl.Imaging.pngimage, Vcl.ExtCtrls,
+  Vcl.Imaging.jpeg;
 
 type
   TFrmPrincipal = class(TForm)
     sbPrincipal: TStatusBar;
-    pnTopo: TPanel;
-    Image1: TImage;
-    Image2: TImage;
-    Image3: TImage;
-    Label1: TLabel;
-    Label2: TLabel;
-    Label3: TLabel;
-    Image4: TImage;
-    Label4: TLabel;
-    Image5: TImage;
-    Image6: TImage;
-    Label5: TLabel;
-    Image7: TImage;
-    lbPrestador: TLabel;
+    pnEsqueda: TPanel;
+    imInicio: TImage;
+    imBuscar: TImage;
+    imAgenda: TImage;
+    imConfiguracao: TImage;
+    imSair: TImage;
+    imFundo: TImage;
+    imIniciotxt: TImage;
+    imBuscartxt: TImage;
+    imAgendatxt: TImage;
+    imConfiguracaotxt: TImage;
+    imMensagemtxt: TImage;
+    imMensagem: TImage;
+    imNext: TImage;
+    imPrevious: TImage;
+    imServicoPrestador: TImage;
     procedure miSairClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure miServicoClick(Sender: TObject);
     procedure ServicoClick(Sender: TObject);
     procedure HomeClick(Sender: TObject);
     procedure MensagemClick(Sender: TObject);
     procedure AgendamentoClick(Sender: TObject);
+    procedure imConfiguracaoClick(Sender: TObject);
+    procedure imNextClick(Sender: TObject);
+    procedure imPreviousClick(Sender: TObject);
   private
     { Private declaration }
   public
@@ -48,7 +53,8 @@ uses
   , UFrmLogin
   , UFrmServico
   , UFrmMensagem
-  , UFrmAgendamento;
+  , UFrmAgendamento
+  , UFrmConfiguracao;
 
   {$R *.dfm}
 
@@ -61,9 +67,48 @@ end;
 
 procedure TFrmPrincipal.HomeClick(Sender: TObject);
 begin
-  if FrmPrincipal = nil then
-    FrmPrincipal := TFrmPrincipal.Create(Self);
-FrmPrincipal.Show;
+//FormClose;
+end;
+
+procedure TFrmPrincipal.imConfiguracaoClick(Sender: TObject);
+begin
+ if FrmConfiguracao = nil then
+    FrmConfiguracao := TFrmConfiguracao.Create(Self);
+FrmConfiguracao.Show;
+end;
+
+procedure TFrmPrincipal.imNextClick(Sender: TObject);
+begin
+imInicio.Visible          := False;
+imBuscar.Visible          := False;
+imAgenda.Visible          := False;
+imConfiguracao.Visible    := False;
+imBuscartxt.Visible       := False;
+imAgendatxt.Visible       := False;
+imMensagemtxt.Visible     := False;
+imConfiguracaotxt.Visible := False;
+imMensagem.Visible        := False;
+imIniciotxt.Visible       := False;
+imNext.Visible            := False;
+imPrevious.Visible        := Enabled;
+imServicoPrestador.Visible := Enabled;
+end;
+
+procedure TFrmPrincipal.imPreviousClick(Sender: TObject);
+begin
+imInicio.Visible          := Enabled;
+imBuscar.Visible          := Enabled;
+imAgenda.Visible          := Enabled;
+imConfiguracao.Visible    := Enabled;
+imBuscartxt.Visible       := Enabled;
+imAgendatxt.Visible       := Enabled;
+imMensagemtxt.Visible     := Enabled;
+imConfiguracaotxt.Visible := Enabled;
+imMensagem.Visible        := Enabled;
+imIniciotxt.Visible       := Enabled;
+imNext.Visible            := Enabled;
+imPrevious.Visible           := False;
+imServicoPrestador.Visible   := False;
 end;
 
 procedure TFrmPrincipal.AgendamentoClick(Sender: TObject);
@@ -83,13 +128,6 @@ end;
 procedure TFrmPrincipal.miSairClick(Sender: TObject);
 begin
   Close;
-end;
-
-procedure TFrmPrincipal.miServicoClick(Sender: TObject);
-begin
-  if FrmServico = nil then
-    FrmServico := TFrmServico.Create(Self);
-FrmServico.Show;
 end;
 
 procedure TFrmPrincipal.FormShow(Sender: TObject);

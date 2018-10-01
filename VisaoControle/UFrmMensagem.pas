@@ -4,15 +4,12 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Imaging.pngimage,
+  Vcl.ExtCtrls, Vcl.Imaging.jpeg;
 
 type
   TFrmMensagem = class(TForm)
-    Button1: TButton;
-    Button2: TButton;
-    ListBox2: TListBox;
-    ListBox1: TListBox;
-    Memo1: TMemo;
+    imFundo: TImage;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }

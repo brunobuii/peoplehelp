@@ -57,7 +57,7 @@ begin
     coUSUARIO.EMAIL             := FieldByName(FLD_USUARIO_EMAIL).AsString;
     coUSUARIO.SENHA             := FieldByName(FLD_USUARIO_SENHA).AsString;
     coUSUARIO.RUA               := FieldByName(FLD_USUARIO_RUA).AsString;
-    coUSUARIO.SEXO              := Boolean(FieldByName(FLD_USUARIO_SEXO).AsInteger);
+    coUSUARIO.SEXO              := FieldByName(FLD_USUARIO_SEXO).AsInteger;
     coUSUARIO.BAIRRO            := FieldByName(FLD_USUARIO_BAIRRO).AsString;
     coUSUARIO.CIDADE            := FieldByName(FLD_USUARIO_SENHA).AsString;
     coUSUARIO.NUMERO            := FieldByName(FLD_USUARIO_NUMERO).AsInteger;

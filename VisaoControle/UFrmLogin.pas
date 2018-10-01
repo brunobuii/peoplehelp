@@ -7,22 +7,27 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Imaging.pngimage,
   Vcl.StdCtrls, Vcl.Buttons
-  , UMensagens, Vcl.Menus, Vcl.ComCtrls;
+  , UMensagens, Vcl.Menus, Vcl.ComCtrls, Vcl.Imaging.jpeg;
 
 type
   TFrmLogin = class(TForm)
     sbPrincipal: TStatusBar;
-    Panel1: TPanel;
-    Image1: TImage;
-    Image4: TImage;
-    Image5: TImage;
-    lbLogin: TLabel;
-    Label1: TLabel;
-    imEntrar: TImage;
     edLoginEmail: TEdit;
     edLoginSenha: TEdit;
+    imSenha: TImage;
+    imLogin: TImage;
+    imgFundo: TImage;
+    imgTopo: TImage;
+    imgEntrar: TImage;
+    imgFechar: TImage;
+    imgLogo: TImage;
+    imgCadeado: TImage;
+    imLoginCadeado: TImage;
+    imgEmail2: TImage;
+    imSenha2: TImage;
     procedure imEntrarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure imgFecharClick(Sender: TObject);
   end;
 
 implementation
@@ -40,6 +45,11 @@ begin
   edLoginEmail.Text := 'admin@admin.com';
   edLoginSenha.Text := 'adminadmin';
   {$ENDIF}
+end;
+
+procedure TFrmLogin.imgFecharClick(Sender: TObject);
+begin
+CloseModal;
 end;
 
 procedure TFrmLogin.imEntrarClick(Sender: TObject);

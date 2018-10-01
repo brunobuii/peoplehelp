@@ -26,7 +26,6 @@ object FrmRegistrar: TFrmRegistrar
     Color = clMedGray
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 803
     object Image1: TImage
       Left = 74
       Top = 6
@@ -7554,8 +7553,6 @@ object FrmRegistrar: TFrmRegistrar
     Height = 48
     Align = alBottom
     TabOrder = 1
-    ExplicitTop = 428
-    ExplicitWidth = 803
     DesignSize = (
       813
       48)
@@ -7621,7 +7618,6 @@ object FrmRegistrar: TFrmRegistrar
       TabOrder = 1
       Visible = False
       OnClick = btnGravarClick
-      ExplicitLeft = 449
     end
     object btnLimpar: TBitBtn
       Left = 576
@@ -7654,7 +7650,6 @@ object FrmRegistrar: TFrmRegistrar
       TabOrder = 2
       Visible = False
       OnClick = btnLimparClick
-      ExplicitLeft = 566
     end
     object btnSair: TBitBtn
       Left = 693
@@ -7686,7 +7681,6 @@ object FrmRegistrar: TFrmRegistrar
       ParentFont = False
       TabOrder = 3
       OnClick = btnSairClick
-      ExplicitLeft = 683
     end
   end
   object PnEsquerdo: TPanel
@@ -7696,7 +7690,6 @@ object FrmRegistrar: TFrmRegistrar
     Height = 315
     Align = alLeft
     TabOrder = 2
-    ExplicitHeight = 299
     object cbxPrestador: TCheckBox
       Left = 16
       Top = 21
@@ -7736,7 +7729,6 @@ object FrmRegistrar: TFrmRegistrar
     Height = 315
     Align = alClient
     TabOrder = 3
-    ExplicitLeft = 199
     object lbNome: TLabel
       Left = 28
       Top = 14
@@ -7970,7 +7962,7 @@ object FrmRegistrar: TFrmRegistrar
       TabOrder = 7
       Visible = False
     end
-    object cmbCidade: TComboBox
+    object cbxCidade: TComboBox
       Left = 153
       Top = 127
       Width = 182
@@ -7978,6 +7970,7 @@ object FrmRegistrar: TFrmRegistrar
       TabOrder = 8
       Text = 'Selecione'
       Visible = False
+      OnChange = cbxCidadeChange
       Items.Strings = (
         'Blumenau'
         'Brusque'
@@ -8027,11 +8020,6 @@ object FrmRegistrar: TFrmRegistrar
       TabOrder = 11
       Text = 'Selecione'
       Visible = False
-      Items.Strings = (
-        'Blumenau'
-        'Brusque'
-        'Gaspar'
-        'Indaial')
     end
   end
 end

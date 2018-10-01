@@ -25,7 +25,13 @@ uses
   UUsuarioLogado in 'Modelo\UUsuarioLogado.pas',
   UFrmServico in 'VisaoControle\UFrmServico.pas' {FrmServico},
   UFrmMensagem in 'VisaoControle\UFrmMensagem.pas' {FrmMensagem},
-  UFrmAgendamento in 'VisaoControle\UFrmAgendamento.pas' {FrmAgendamento};
+  UFrmAgendamento in 'VisaoControle\UFrmAgendamento.pas' {FrmAgendamento},
+  UCidade in 'Modelo\Persistencia\UCidade.pas',
+  URepositorioCidade in 'Modelo\Persistencia\URepositorioCidade.pas',
+  UBairro in 'Modelo\Persistencia\UBairro.pas',
+  URepositorioBairro in 'Modelo\Persistencia\URepositorioBairro.pas',
+  UFrmConfiguracao in 'VisaoControle\UFrmConfiguracao.pas' {FrmConfiguracao},
+  UFrmRegistro in 'VisaoControle\UFrmRegistro.pas' {FrmRegistro};
 
 {$R *.res}
 
