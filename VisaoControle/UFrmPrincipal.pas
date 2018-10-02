@@ -26,6 +26,7 @@ type
     imNext: TImage;
     imPrevious: TImage;
     imServicoPrestador: TImage;
+    imAnunciotxt: TImage;
     procedure miSairClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure ServicoClick(Sender: TObject);
@@ -35,6 +36,7 @@ type
     procedure imConfiguracaoClick(Sender: TObject);
     procedure imNextClick(Sender: TObject);
     procedure imPreviousClick(Sender: TObject);
+    procedure imServicoPrestadorClick(Sender: TObject);
   private
     { Private declaration }
   public
@@ -54,7 +56,8 @@ uses
   , UFrmServico
   , UFrmMensagem
   , UFrmAgendamento
-  , UFrmConfiguracao;
+  , UFrmConfiguracao
+  , UFrmCriarServico;
 
   {$R *.dfm}
 
@@ -92,6 +95,7 @@ imIniciotxt.Visible       := False;
 imNext.Visible            := False;
 imPrevious.Visible        := Enabled;
 imServicoPrestador.Visible := Enabled;
+imAnunciotxt.Visible       := Enabled;
 end;
 
 procedure TFrmPrincipal.imPreviousClick(Sender: TObject);
@@ -109,6 +113,14 @@ imIniciotxt.Visible       := Enabled;
 imNext.Visible            := Enabled;
 imPrevious.Visible           := False;
 imServicoPrestador.Visible   := False;
+imAnunciotxt.Visible         := False;
+end;
+
+procedure TFrmPrincipal.imServicoPrestadorClick(Sender: TObject);
+begin
+ if FrmCriarServico = nil then
+    FrmCriarServico := TFrmCriarServico.Create(Self);
+FrmCriarServico.Show;
 end;
 
 procedure TFrmPrincipal.AgendamentoClick(Sender: TObject);

@@ -87,11 +87,12 @@ begin
     USUARIO.RUA               := edRua.Text;
     USUARIO.NUMERO            := StrToInt(edNumero.Text);
     USUARIO.EMAIL             := edEmail.Text;
-    USUARIO.CIDADE            := cbxCidade.Text;
     USUARIO.TELEFONE          := edTelefone.Text;
     USUARIO.PRESTADOR         := cbxPrestador.Checked;
     USUARIO.CLIENTE           := cbxCliente.Checked;
     USUARIO.SEXO              := rgSexo.ItemIndex;
+    USUARIO.BAIRRO.ID         := TBAIRRO(cbxBairro.Items.Objects[cbxBairro.ItemIndex]).ID;
+
     FRegraCRUDUsuario.CONFIRMACAO_SENHA := edConfirmacaoSenha.Text;
     FRegraCRUDUsuario.Insere(USUARIO);
     TUsuarioLogado.RealizaLogin(edEmail.Text, edSenha.Text);

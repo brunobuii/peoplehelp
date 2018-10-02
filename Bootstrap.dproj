@@ -193,6 +193,17 @@
             <Form>FrmRegistro</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="VisaoControle\UFrmCriarServico.pas">
+            <Form>FrmCriarServico</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Modelo\UServico.pas"/>
+        <DCCReference Include="Modelo\Persistencia\URepositorioServico.pas"/>
+        <DCCReference Include="Modelo\UListaVisualizacao.pas"/>
+        <DCCReference Include="VisaoControle\UFrmPesquisa.pas">
+            <Form>frmPesquisa</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Debug">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

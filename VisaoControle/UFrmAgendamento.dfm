@@ -3301,7 +3301,17 @@ object FrmAgendamento: TFrmAgendamento
       B67F9C557F3EB8D9F51B8DFF00EBE6FF00BECD3A1BD9BF79FBD93FEFA347B7F7
       B96C692A3E6761E7D7EBC57E2BDB5ECCCF2E6690FD58D7ED457D370ED5E7F69A
       76FD4F07368DB93E7FA1FFD9}
-    ExplicitWidth = 1167
-    ExplicitHeight = 416
+    ExplicitLeft = -248
+    ExplicitTop = -184
+  end
+  object StringGrid1: TStringGrid
+    Left = 0
+    Top = 0
+    Width = 1159
+    Height = 708
+    Align = alClient
+    TabOrder = 0
+    ExplicitWidth = 1151
+    ExplicitHeight = 465
   end
 end

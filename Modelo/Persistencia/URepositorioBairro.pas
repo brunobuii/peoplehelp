@@ -64,12 +64,13 @@ begin
     FSQLSelect.ParamByName(FLD_BAIRRO_ID_CIDADE).AsInteger := ciIdCidade;
     FSQLSelect.Open;
 
-    if not FSQLSelect.Eof then
+    while not FSQLSelect.Eof do
     begin
       loBAIRRO := TBAIRRO.Create;
       AtribuiDBParaEntidade(loBAIRRO);
 
       loListaBairros.Add(loBAIRRO);
+      FSQLSelect.Next;
     end;
 
     Result := loListaBairros.ToArray;

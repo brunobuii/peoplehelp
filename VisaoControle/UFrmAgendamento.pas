@@ -5,13 +5,14 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.WinXCalendars, Vcl.Imaging.pngimage,
-  Vcl.ExtCtrls, Vcl.Imaging.jpeg;
+  Vcl.ExtCtrls, Vcl.Imaging.jpeg, Vcl.Grids;
 
 type
   TFrmAgendamento = class(TForm)
     imFundo: TImage;
-  procedure CabecalhoResultadoConsulta;
-  //function RetornaLinha(poLinha: TTipoLinnhaHorario): Integer;
+    StringGrid1: TStringGrid;
+//  procedure CabecalhoResultadoConsulta;
+//  function RetornaLinha(poLinha: TTipoLinnhaHorario): Integer;
   private
     { Private declarations }
   public
@@ -30,12 +31,12 @@ uses
   ;
 { TFrmAgendamento }
 
-procedure TFrmAgendamento.CabecalhoResultadoConsulta;
-const
-  STR_DATE_TIME = 'Hora';
-  CNT_COL_HORAS = 0;
-begin
-//  sgConsultaResultado.Cells[0, 0] := STR_DATE_TIME;
+//procedure TFrmAgendamento.CabecalhoResultadoConsulta;
+//const
+//  STR_DATE_TIME = 'Hora';
+//  CNT_COL_HORAS = 0;
+//begin
+// sgConsultaResultado.Cells[0, 0] := STR_DATE_TIME;
 //
 //  sgConsultaResultado.Cells[CNT_COL_HORAS, RetornaLinha(tlOITO_ZERO          )] := STR_OITO_ZERO           ;
 //  sgConsultaResultado.Cells[CNT_COL_HORAS, RetornaLinha(tlOITO_TRINTA        )] := STR_OITO_TRINTA         ;
@@ -59,7 +60,7 @@ begin
 //  sgConsultaResultado.Cells[CNT_COL_HORAS, RetornaLinha(tlDEZOITO_TRINTA     )] := STR_DEZOITO_TRINTA      ;
 //  sgConsultaResultado.Cells[CNT_COL_HORAS, RetornaLinha(tlDEZENOVE_ZERO      )] := STR_DEZENOVE_ZERO       ;
 //  sgConsultaResultado.Cells[CNT_COL_HORAS, RetornaLinha(tlDEZENOVE_QRT_CINCO )] := STR_DEZENOVE_TRINTA     ;
-  end;
+//  end;
 //function TFrmAgendamento.RetornaLinha(poLinha: TTipoLinnhaHorario): Integer;
 //begin
 //  Result:= Integer(CNT_HORARIOS_CADASTRO(poLinha));

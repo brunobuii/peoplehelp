@@ -44,6 +44,9 @@ resourcestring
   //Bairro
   STR_BAIRRO = 'Bairro';
 
+  //Servico
+  STR_SERVICO = 'Servico';
+
   //Horários
   STR_OITO_ZERO           = '08:00';
   STR_OITO_TRINTA         = '08:30';

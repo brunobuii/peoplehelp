@@ -6,11 +6,13 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,
-  Vcl.Imaging.pngimage, Vcl.Imaging.jpeg
+  Vcl.Imaging.pngimage, Vcl.Imaging.jpeg, Vcl.Grids, Data.DB, Vcl.DBGrids
   , URegraCRUDUsuario
   , UUsuario
   , URepositorioCidade
-  , URepositorioBairro, Vcl.Grids
+  , URepositorioBairro
+  , UListaVisualizacao
+  , SQLExpr
   ;
 
 type
@@ -27,16 +29,19 @@ type
     lbSexo: TLabel;
     cbxSexo: TComboBox;
     imFundo: TImage;
-    StringGrid1: TStringGrid;
+    dbgPrestadores: TDBGrid;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormDestroy(Sender: TObject);
     procedure cbxCidadeChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure AtualizaListaServico;
+    procedure btnPesqusiarClick(Sender: TObject);
   private
     FRegraCRUDUsuario: TRegraCRUDUsuario;
     FRepositorioCidade: TRepositorioCidade;
     FRepositorioBairro: TRepositorioBairro;
+    FListaVisualizacao: TLIstaVisualizacao;
+
+    procedure OnDefineParametros(const coSQLDataSet: TSQLDataSet);
   end;
 
 var
@@ -51,35 +56,30 @@ uses
   , UDialogo
   , UCidade
   , UBairro
+  , UOpcaoPesquisa
   ;
 
 const
-    COL_TIPO            = 0;
-    COL_DISPONIBILIDADE = 1;
-    COL_VALOR           = 2;
+  COL_PRESTADOR       = 0;
+  COL_SERVICO         = 1;
+  COL_VALOR           = 2;
 
-procedure TFrmServico.AtualizaListaServico;
+  CNT_SELECAO_PERSTADORES = 'select * from vw_prestador_servico'
+                          + ' where (id_bairro  = :id_bairro or null = :id_bairro1)'
+                          + '   and (id_cidade  = :id_cidade or null = :id_cidade1)'
+                          + '   and (id_servico = :id_servico or null = :id_servico1)'
+                          + '   and (id_sexo    = :id_sexo or null = :id_sexo1)';
+
+  VW_PRESTADORES_ID_BAIRRO  = 'id_bairro';
+  VW_PRESTADORES_ID_CIDADE  = 'id_cidade';
+  VW_PRESTADORES_ID_SERVICO = 'id_servico';
+  VW_PRESTADORES_ID_SEXO    = 'id_sexo';
+
+procedure TFrmServico.btnPesqusiarClick(Sender: TObject);
 begin
-// TipoDisponibilidade := TTipoDisponibilidade(rgDisponibilidade.ItemIndex);
-//
-//  sgImoveis.RowCount := 2;
-//  sgImoveis.Rows[1].Clear;
-//
-//  //Definindo cabeçalhos da grid.
-//  sgServico.Cells[COL_PRESTADOR, 0] := STR_PRESTADOR;
-//  sgServico.Cells[COL_SERVICO, 0]   := STR_SERVICO;
-//  sgServico.Cells[COL_VALOR, 0]     := STR_VALOR;
-//
-//  Linha := 0;
-//  for Servico in Servicos do
-//  begin
-//    Inc(Linha);
-//
-//    sgServico.Cells[COL_PRESTADOR, Linha] := CNT_DESCRICAO_TIPO_IMOVEL[Imovel.Tipo];
-//    sgServico.Cells[COL_SERVICO, Linha]   := CNT_DESCRICAO_TIPO_DISPONIBILIDADE[TipoDisponibilidade];
-//    sgServico.Cells[COL_VALOR, Linha]     := FloatToStrF(Imovel.RetornaValor(TipoDisponibilidade), ffCurrency, 10, 2);
-//
-//    sgImoveis.RowCount := Linha + 1;
+  FListaVisualizacao.OnDefineParametros := OnDefineParametros;
+  FListaVisualizacao.CarregaPesquisa(TOpcaoPesquisa.Create
+    .DefineSQL(CNT_SELECAO_PERSTADORES));
 end;
 
 procedure TFrmServico.cbxCidadeChange(Sender: TObject);
@@ -87,7 +87,7 @@ var
   loCIDADE: TCIDADE;
   loBAIRRO: TBAIRRO;
 begin
-  cbxBairro.Items.Clear;
+  cbxBairro.ItemIndex := 0;
 
   loCIDADE := TCIDADE(cbxCidade.Items.Objects[cbxCidade.ItemIndex]);
   for loBAIRRO in FRepositorioBairro.RetornaBairrosCidade(loCIDADE.ID) do
@@ -106,15 +106,16 @@ procedure TFrmServico.FormCreate(Sender: TObject);
 var
   loCIDADE: TCIDADE;
 begin
-   FRegraCRUDUsuario  := TRegraCRUDUsuario.Create;
-   FRepositorioCidade := TRepositorioCidade.Create;
-   FRepositorioBairro := TRepositorioBairro.Create;
+  FRegraCRUDUsuario  := TRegraCRUDUsuario.Create;
+  FRepositorioCidade := TRepositorioCidade.Create;
+  FRepositorioBairro := TRepositorioBairro.Create;
 
-  cbxCidade.Items.Clear;
   for loCIDADE in FRepositorioCidade.RetornaTodos do
   begin
     cbxCidade.AddItem(loCIDADE.NOME, loCIDADE);
   end;
+
+  FListaVisualizacao := TLIstaVisualizacao.Create(dbgPrestadores);
 end;
 
 procedure TFrmServico.FormDestroy(Sender: TObject);
@@ -122,6 +123,56 @@ begin
    FreeAndNil(FRegraCRUDUsuario);
    FreeAndNil(FRepositorioCidade);
    FreeAndNil(FRepositorioBairro);
+end;
+
+procedure TFrmServico.OnDefineParametros(const coSQLDataSet: TSQLDataSet);
+begin
+  with coSQLDataSet do
+  begin
+    ParamByName(VW_PRESTADORES_ID_BAIRRO      ).DataType := ftString;
+    ParamByName(VW_PRESTADORES_ID_BAIRRO + '1').Clear;
+    ParamByName(VW_PRESTADORES_ID_CIDADE + '1').DataType := ftString;
+    ParamByName(VW_PRESTADORES_ID_CIDADE + '1').Clear;
+    ParamByName(VW_PRESTADORES_ID_SERVICO + '1').DataType := ftString;
+    ParamByName(VW_PRESTADORES_ID_SERVICO + '1').Clear;
+    ParamByName(VW_PRESTADORES_ID_SEXO + '1').DataType := ftString;
+    ParamByName(VW_PRESTADORES_ID_SEXO + '1').Clear;
+
+    if cbxBairro.ItemIndex = 0 then
+    begin
+      ParamByName(VW_PRESTADORES_ID_BAIRRO + '1').DataType := ftString;
+      ParamByName(VW_PRESTADORES_ID_BAIRRO + '1').Clear;
+    end
+    else
+      ParamByName(VW_PRESTADORES_ID_BAIRRO ).AsInteger := TBAIRRO(cbxBairro.Items.Objects[cbxBairro.ItemIndex]).ID;
+
+    if cbxCidade.ItemIndex = 0 then
+    begin
+      ParamByName(VW_PRESTADORES_ID_CIDADE + '1' ).DataType := ftString;
+      ParamByName(VW_PRESTADORES_ID_CIDADE + '1').Value    := NULL;
+      ParamByName(VW_PRESTADORES_ID_CIDADE + '1').Clear;
+    end
+    else
+      ParamByName(VW_PRESTADORES_ID_CIDADE ).AsInteger := TCIDADE(cbxCidade.Items.Objects[cbxCidade.ItemIndex]).ID;
+
+    if cbxServico.ItemIndex = 0 then
+    begin
+      ParamByName(VW_PRESTADORES_ID_SERVICO  + '1').DataType := ftString;
+      ParamByName(VW_PRESTADORES_ID_SERVICO  + '1').Value    := NULL;
+      ParamByName(VW_PRESTADORES_ID_SERVICO  + '1').Clear;
+    end
+    else
+      ParamByName(VW_PRESTADORES_ID_SERVICO ).AsInteger := cbxServico.ItemIndex;
+
+    if cbxSexo.ItemIndex = 0 then
+    begin
+      ParamByName(VW_PRESTADORES_ID_SEXO + '1').DataType := ftString;
+      ParamByName(VW_PRESTADORES_ID_SEXO + '1').Value    := NULL;
+      ParamByName(VW_PRESTADORES_ID_SEXO + '1').Clear;
+    end
+    else
+      ParamByName(VW_PRESTADORES_ID_SEXO ).AsInteger := cbxSexo.ItemIndex;
+  end;
 end;
 
 end.

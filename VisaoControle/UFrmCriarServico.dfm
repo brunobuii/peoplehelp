@@ -1,8 +1,8 @@
-object FrmServico: TFrmServico
+object FrmCriarServico: TFrmCriarServico
   Left = 0
   Top = 0
-  Caption = 'Servi'#231'o'
-  ClientHeight = 681
+  Caption = 'Prestador Servi'#231'o'
+  ClientHeight = 682
   ClientWidth = 1262
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -14,16 +14,14 @@ object FrmServico: TFrmServico
   OldCreateOrder = False
   Visible = True
   WindowState = wsMaximized
-  OnClose = FormClose
   OnCreate = FormCreate
-  OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 13
   object imFundo: TImage
-    Left = 185
+    Left = 241
     Top = 0
-    Width = 1077
-    Height = 681
+    Width = 1021
+    Height = 682
     Align = alClient
     Picture.Data = {
       0A544A504547496D6167659D990100FFD8FFE000104A46494600010101006000
@@ -3304,75 +3302,66 @@ object FrmServico: TFrmServico
       B67F9C557F3EB8D9F51B8DFF00EBE6FF00BECD3A1BD9BF79FBD93FEFA347B7F7
       B96C692A3E6761E7D7EBC57E2BDB5ECCCF2E6690FD58D7ED457D370ED5E7F69A
       76FD4F07368DB93E7FA1FFD9}
-    ExplicitLeft = 528
-    ExplicitTop = 304
-    ExplicitWidth = 105
-    ExplicitHeight = 105
+    ExplicitLeft = 320
+    ExplicitWidth = 942
   end
-  object Panel2: TPanel
+  object pnEsquerdo: TPanel
     Left = 0
     Top = 0
-    Width = 185
-    Height = 681
+    Width = 241
+    Height = 682
     Align = alLeft
     TabOrder = 0
-    object lbCidade: TLabel
-      Left = 16
-      Top = 112
-      Width = 37
+    object Label2: TLabel
+      Left = 264
+      Top = 16
+      Width = 3
       Height = 13
-      Caption = 'Cidade:'
-    end
-    object lbBairro: TLabel
-      Left = 16
-      Top = 169
-      Width = 32
-      Height = 13
-      Caption = 'Bairro:'
     end
     object lbServico: TLabel
-      Left = 16
-      Top = 55
-      Width = 39
-      Height = 13
+      Left = 32
+      Top = 40
+      Width = 57
+      Height = 19
       Caption = 'Servi'#231'o:'
-    end
-    object lbFiltro: TLabel
-      Left = 56
-      Top = 10
-      Width = 63
-      Height = 25
-      Caption = 'Filtros:'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -21
+      Font.Height = -16
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
     end
-    object lbSexo: TLabel
-      Left = 16
-      Top = 233
-      Width = 28
-      Height = 13
-      Caption = 'Sexo:'
+    object lbValor: TLabel
+      Left = 32
+      Top = 119
+      Width = 43
+      Height = 19
+      Caption = 'Valor:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
     end
-    object cbxCidade: TComboBox
-      Left = 16
-      Top = 131
-      Width = 145
-      Height = 21
-      ItemIndex = 0
+    object btnSalvar: TButton
+      Left = 66
+      Top = 632
+      Width = 103
+      Height = 33
+      Caption = 'Salvar'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
       TabOrder = 0
-      Text = 'Selecione'
-      OnChange = cbxCidadeChange
-      Items.Strings = (
-        'Selecione')
     end
-    object cbxBairro: TComboBox
-      Left = 16
-      Top = 188
-      Width = 145
+    object cbxServico: TComboBox
+      Left = 32
+      Top = 72
+      Width = 153
       Height = 21
       ItemIndex = 0
       TabOrder = 1
@@ -3380,80 +3369,20 @@ object FrmServico: TFrmServico
       Items.Strings = (
         'Selecione')
     end
-    object cbxServico: TComboBox
-      Left = 16
-      Top = 74
-      Width = 145
+    object edValor: TEdit
+      Left = 32
+      Top = 152
+      Width = 153
       Height = 21
       TabOrder = 2
-      Text = 'Selecione'
-      Items.Strings = (
-        'Selecione'
-        'Encanador(a)'
-        'Eletricista'
-        'Marceneiro(a)'
-        'Pedreiro(a)'
-        'Jardineiro(a)'
-        'Domestica'
-        'Lavador de Carros'
-        'Cozinheiro(a)'
-        'Engenheiro(a)'
-        'Enfermeiro(a)'
-        'Bab'#225
-        'Motorista'
-        'Mec'#226'nico(a)'
-        'Eletricista de Ve'#237'culos'
-        'Contador(a)'
-        'Professor(a) de Ingl'#234's'
-        'Professor(a) de Alem'#227'o'
-        'Professor(a)'
-        'Veterin'#225'rio(a)'
-        'Arquiteto(a)'
-        'Personal Treiner'
-        'Qu'#237'mico'
-        'Conselheiro(a)'
-        'Psicologo(a)'
-        'Dentista'
-        'Passeador(a) de Animais'
-        'T'#233'cnico em informatica'
-        'Servi'#231'os Gerais')
-    end
-    object btnPesqusiar: TButton
-      Left = 56
-      Top = 336
-      Width = 75
-      Height = 25
-      Caption = 'Pesquisar'
-      TabOrder = 3
-      OnClick = btnPesqusiarClick
-    end
-    object cbxSexo: TComboBox
-      Left = 16
-      Top = 252
-      Width = 145
-      Height = 21
-      TabOrder = 4
-      Text = 'Selecione'
-      Items.Strings = (
-        'Selecione'
-        'Masculino'
-        'Feminino')
     end
   end
-  object dbgPrestadores: TDBGrid
-    Left = 185
+  object StringGrid1: TStringGrid
+    Left = 241
     Top = 0
-    Width = 1077
-    Height = 681
+    Width = 1021
+    Height = 682
     Align = alClient
-    FixedColor = clGradientInactiveCaption
-    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
-    ReadOnly = True
     TabOrder = 1
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'Tahoma'
-    TitleFont.Style = []
   end
 end
