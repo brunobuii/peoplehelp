@@ -36,7 +36,7 @@ uses
   UServico in 'Modelo\UServico.pas',
   URepositorioServico in 'Modelo\Persistencia\URepositorioServico.pas',
   UListaVisualizacao in 'Modelo\UListaVisualizacao.pas',
-  UFrmPesquisa in 'VisaoControle\UFrmPesquisa.pas' {frmPesquisa};
+  UUsuarioAlterar in 'Modelo\Persistencia\UUsuarioAlterar.pas';
 
 {$R *.res}
 

@@ -6591,7 +6591,7 @@ object FrmConfiguracao: TFrmConfiguracao
       B67F9C557F3EB8D9F51B8DFF00EBE6FF00BECD3A1BD9BF79FBD93FEFA347B7F7
       B96C692A3E6761E7D7EBC57E2BDB5ECCCF2E6690FD58D7ED457D370ED5E7F69A
       76FD4F07368DB93E7FA1FFD9}
-    ExplicitLeft = 314
+    ExplicitLeft = 327
   end
   object pnEsquerdo: TPanel
     Left = 0
@@ -6600,6 +6600,8 @@ object FrmConfiguracao: TFrmConfiguracao
     Height = 682
     Align = alLeft
     TabOrder = 0
+    ExplicitLeft = -6
+    ExplicitTop = 8
     object lbAlterar: TLabel
       Left = 8
       Top = 16
@@ -6678,6 +6680,19 @@ object FrmConfiguracao: TFrmConfiguracao
       Font.Style = []
       ParentFont = False
     end
+    object lbSenhaNova: TLabel
+      Left = 8
+      Top = 459
+      Width = 84
+      Height = 18
+      Caption = 'Senha Nova:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
     object edEmail: TEdit
       Left = 8
       Top = 96
@@ -6735,7 +6750,6 @@ object FrmConfiguracao: TFrmConfiguracao
       Height = 21
       TabOrder = 4
       Text = 'Selecione:'
-      OnClick = cbxCidadeClick
     end
     object edNumero: TEdit
       Left = 8
@@ -6750,6 +6764,48 @@ object FrmConfiguracao: TFrmConfiguracao
       OEMConvert = True
       ParentFont = False
       TabOrder = 5
+    end
+    object cbPrestador: TCheckBox
+      Left = 8
+      Top = 552
+      Width = 97
+      Height = 17
+      Caption = 'Prestador'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 6
+    end
+    object cbUsuario: TCheckBox
+      Left = 8
+      Top = 575
+      Width = 97
+      Height = 17
+      Caption = 'Usu'#225'rio'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 7
+    end
+    object edSenhaNova: TEdit
+      Left = 8
+      Top = 483
+      Width = 217
+      Height = 26
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      OEMConvert = True
+      ParentFont = False
+      TabOrder = 8
     end
   end
 end

@@ -27,6 +27,10 @@ type
     cbxBairro: TComboBox;
     lbNumero: TLabel;
     edNumero: TEdit;
+    cbPrestador: TCheckBox;
+    cbUsuario: TCheckBox;
+    edSenhaNova: TEdit;
+    lbSenhaNova: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure cbxCidadeClick(Sender: TObject);

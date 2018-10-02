@@ -11,6 +11,7 @@ uses
   , UUsuario
   , URepositorioCidade
   , URepositorioBairro
+  , URepositorioServico
   , UListaVisualizacao
   , SQLExpr
   ;
@@ -39,7 +40,8 @@ type
     FRegraCRUDUsuario: TRegraCRUDUsuario;
     FRepositorioCidade: TRepositorioCidade;
     FRepositorioBairro: TRepositorioBairro;
-    FListaVisualizacao: TLIstaVisualizacao;
+    FListaVisualizacao: TListaVisualizacao;
+    FRepositorioServico: TRepositorioServico;
 
     procedure OnDefineParametros(const coSQLDataSet: TSQLDataSet);
   end;
@@ -57,6 +59,7 @@ uses
   , UCidade
   , UBairro
   , UOpcaoPesquisa
+  , UServico
   ;
 
 const
@@ -64,11 +67,15 @@ const
   COL_SERVICO         = 1;
   COL_VALOR           = 2;
 
-  CNT_SELECAO_PERSTADORES = 'select * from vw_prestador_servico'
-                          + ' where (id_bairro  = :id_bairro or null = :id_bairro1)'
-                          + '   and (id_cidade  = :id_cidade or null = :id_cidade1)'
-                          + '   and (id_servico = :id_servico or null = :id_servico1)'
-                          + '   and (id_sexo    = :id_sexo or null = :id_sexo1)';
+//  CNT_SELECAO_PERSTADORES = 'select * from vw_prestador_servico'
+//                          + ' where (id_bairro  = :id_bairro or null = :id_bairro)'
+//                          + '   and (id_cidade  = :id_cidade or null = :id_cidade)'
+//                          + '   and (id_servico = :id_servico or null = :id_servico)'
+//                          + '   and (id_sexo    = :id_sexo or null = :id_sexo)';
+
+
+  CNT_SELECAO_PERSTADORES = 'select * from vw_prestador_servico';
+
 
   VW_PRESTADORES_ID_BAIRRO  = 'id_bairro';
   VW_PRESTADORES_ID_CIDADE  = 'id_cidade';
@@ -105,14 +112,21 @@ end;
 procedure TFrmServico.FormCreate(Sender: TObject);
 var
   loCIDADE: TCIDADE;
+  loSERVICO: TSERVICO;
 begin
   FRegraCRUDUsuario  := TRegraCRUDUsuario.Create;
   FRepositorioCidade := TRepositorioCidade.Create;
   FRepositorioBairro := TRepositorioBairro.Create;
+  FRepositorioServico := TRepositorioServico.Create;
 
   for loCIDADE in FRepositorioCidade.RetornaTodos do
   begin
     cbxCidade.AddItem(loCIDADE.NOME, loCIDADE);
+  end;
+
+  for loSERVICO in FRepositorioSERVICO.RetornaTodos do
+  begin
+    cbxServico.AddItem(loSERVICO.SERVICO, loSERVICO);
   end;
 
   FListaVisualizacao := TLIstaVisualizacao.Create(dbgPrestadores);
@@ -123,55 +137,68 @@ begin
    FreeAndNil(FRegraCRUDUsuario);
    FreeAndNil(FRepositorioCidade);
    FreeAndNil(FRepositorioBairro);
+   FreeAndNil(FRepositorioServico);
 end;
 
 procedure TFrmServico.OnDefineParametros(const coSQLDataSet: TSQLDataSet);
-begin
-  with coSQLDataSet do
+var
+  lsCondicao: String;
+
+  procedure AdicionaCondicao(const csCondicao: String);
   begin
-    ParamByName(VW_PRESTADORES_ID_BAIRRO      ).DataType := ftString;
-    ParamByName(VW_PRESTADORES_ID_BAIRRO + '1').Clear;
-    ParamByName(VW_PRESTADORES_ID_CIDADE + '1').DataType := ftString;
-    ParamByName(VW_PRESTADORES_ID_CIDADE + '1').Clear;
-    ParamByName(VW_PRESTADORES_ID_SERVICO + '1').DataType := ftString;
-    ParamByName(VW_PRESTADORES_ID_SERVICO + '1').Clear;
-    ParamByName(VW_PRESTADORES_ID_SEXO + '1').DataType := ftString;
-    ParamByName(VW_PRESTADORES_ID_SEXO + '1').Clear;
-
-    if cbxBairro.ItemIndex = 0 then
+    if lsCondicao = EmptyStr then
     begin
-      ParamByName(VW_PRESTADORES_ID_BAIRRO + '1').DataType := ftString;
-      ParamByName(VW_PRESTADORES_ID_BAIRRO + '1').Clear;
+      lsCondicao := 'where ' +  csCondicao
     end
     else
-      ParamByName(VW_PRESTADORES_ID_BAIRRO ).AsInteger := TBAIRRO(cbxBairro.Items.Objects[cbxBairro.ItemIndex]).ID;
-
-    if cbxCidade.ItemIndex = 0 then
     begin
-      ParamByName(VW_PRESTADORES_ID_CIDADE + '1' ).DataType := ftString;
-      ParamByName(VW_PRESTADORES_ID_CIDADE + '1').Value    := NULL;
-      ParamByName(VW_PRESTADORES_ID_CIDADE + '1').Clear;
+      lsCondicao := lsCondicao + ' and ' +  csCondicao
     end
-    else
-      ParamByName(VW_PRESTADORES_ID_CIDADE ).AsInteger := TCIDADE(cbxCidade.Items.Objects[cbxCidade.ItemIndex]).ID;
+  end;
 
-    if cbxServico.ItemIndex = 0 then
-    begin
-      ParamByName(VW_PRESTADORES_ID_SERVICO  + '1').DataType := ftString;
-      ParamByName(VW_PRESTADORES_ID_SERVICO  + '1').Value    := NULL;
-      ParamByName(VW_PRESTADORES_ID_SERVICO  + '1').Clear;
-    end
-    else
-      ParamByName(VW_PRESTADORES_ID_SERVICO ).AsInteger := cbxServico.ItemIndex;
+begin
+  lsCondicao := '';
 
-    if cbxSexo.ItemIndex = 0 then
-    begin
-      ParamByName(VW_PRESTADORES_ID_SEXO + '1').DataType := ftString;
-      ParamByName(VW_PRESTADORES_ID_SEXO + '1').Value    := NULL;
-      ParamByName(VW_PRESTADORES_ID_SEXO + '1').Clear;
-    end
-    else
-      ParamByName(VW_PRESTADORES_ID_SEXO ).AsInteger := cbxSexo.ItemIndex;
+  if cbxBairro.ItemIndex <> 0 then
+  begin
+    AdicionaCondicao('id_bairro = :id_bairro');
+  end;
+
+  if cbxCidade.ItemIndex <> 0 then
+  begin
+    AdicionaCondicao('id_cidade = :id_cidade');
+  end;
+
+  if cbxServico.ItemIndex <> 0 then
+  begin
+    AdicionaCondicao('id_servico = :id_servico');
+  end;
+
+   if cbxSexo.ItemIndex <> 0 then
+  begin
+    AdicionaCondicao('id_sexo = :id_sexo');
+  end;
+
+  coSQLDataSet.CommandText := CNT_SELECAO_PERSTADORES + ' ' + lsCondicao;
+
+  if cbxBairro.ItemIndex <> 0 then
+  begin
+    coSQLDataSet.ParamByName(VW_PRESTADORES_ID_BAIRRO).AsInteger := TBAIRRO(cbxBairro.Items.Objects[cbxBairro.ItemIndex]).ID;
+  end;
+
+  if cbxCidade.ItemIndex <> 0 then
+  begin
+    coSQLDataSet.ParamByName(VW_PRESTADORES_ID_CIDADE).AsInteger := TCIDADE(cbxCidade.Items.Objects[cbxCidade.ItemIndex]).ID;
+  end;
+
+  if cbxServico.ItemIndex <> 0 then
+  begin
+    coSQLDataSet.ParamByName(VW_PRESTADORES_ID_SERVICO).AsInteger := cbxServico.ItemIndex;
+  end;
+
+   if cbxSexo.ItemIndex <> 0 then
+  begin
+    coSQLDataSet.ParamByName(VW_PRESTADORES_ID_SEXO).AsInteger := cbxSexo.ItemIndex;
   end;
 end;
 

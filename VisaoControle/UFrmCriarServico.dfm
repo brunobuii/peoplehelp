@@ -15,6 +15,7 @@ object FrmCriarServico: TFrmCriarServico
   Visible = True
   WindowState = wsMaximized
   OnCreate = FormCreate
+  OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 13
   object imFundo: TImage
@@ -3344,12 +3345,12 @@ object FrmCriarServico: TFrmCriarServico
       Font.Style = []
       ParentFont = False
     end
-    object btnSalvar: TButton
-      Left = 66
-      Top = 632
+    object btnAtualiza: TButton
+      Left = 62
+      Top = 336
       Width = 103
       Height = 33
-      Caption = 'Salvar'
+      Caption = 'Atualizar'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
@@ -3357,6 +3358,7 @@ object FrmCriarServico: TFrmCriarServico
       Font.Style = []
       ParentFont = False
       TabOrder = 0
+      OnClick = btnAtualizaClick
     end
     object cbxServico: TComboBox
       Left = 32
@@ -3376,13 +3378,36 @@ object FrmCriarServico: TFrmCriarServico
       Height = 21
       TabOrder = 2
     end
+    object btnSalvar: TButton
+      Left = 62
+      Top = 208
+      Width = 103
+      Height = 33
+      Caption = 'Salvar'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 3
+      OnClick = btnAtualizaClick
+    end
   end
-  object StringGrid1: TStringGrid
+  object dbgPrestadores: TDBGrid
     Left = 241
     Top = 0
     Width = 1021
     Height = 682
     Align = alClient
+    FixedColor = clGradientInactiveCaption
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
+    ReadOnly = True
     TabOrder = 1
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
   end
 end

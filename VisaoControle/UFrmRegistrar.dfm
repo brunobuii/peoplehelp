@@ -7712,12 +7712,14 @@ object FrmRegistrar: TFrmRegistrar
       Height = 17
       TabStop = False
       Caption = 'Usu'#225'rio'
+      Checked = True
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -19
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
+      State = cbChecked
       TabOrder = 1
       Visible = False
     end
@@ -7983,12 +7985,14 @@ object FrmRegistrar: TFrmRegistrar
       Width = 157
       Height = 17
       Caption = 'Aceito Termos de Uso'
+      Checked = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
+      State = cbChecked
       TabOrder = 9
       Visible = False
     end
@@ -8004,6 +8008,7 @@ object FrmRegistrar: TFrmRegistrar
       Font.Height = -15
       Font.Name = 'Tahoma'
       Font.Style = []
+      ItemIndex = 0
       Items.Strings = (
         'Masculino'
         'Feminino')

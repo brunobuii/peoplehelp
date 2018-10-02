@@ -106,8 +106,6 @@ begin
       TDialogo.Excecao(E);
     end;
   end;
- // else
-  ShowMessage('Você Não Está de Acordo com os Termos!');
 end;
 
 procedure TFrmRegistrar.btnLimparClick(Sender: TObject);

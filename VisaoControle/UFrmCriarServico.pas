@@ -9,22 +9,31 @@ uses
   , URegraCRUDUsuario
   , UUsuario
   , URepositorioServico
+  , UOpcaoPesquisa, Data.DB
+  , Vcl.DBGrids
+  , UListaVisualizacao
+  , SQLExpr
   ;
+
 
 type
   TFrmCriarServico = class(TForm)
     imFundo: TImage;
     pnEsquerdo: TPanel;
     Label2: TLabel;
-    btnSalvar: TButton;
-    StringGrid1: TStringGrid;
+    btnAtualiza: TButton;
     cbxServico: TComboBox;
     lbServico: TLabel;
     edValor: TEdit;
     lbValor: TLabel;
+    btnSalvar: TButton;
+    dbgPrestadores: TDBGrid;
     procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+    procedure btnAtualizaClick(Sender: TObject);
   private
     FRepositorioServico: TRepositorioServico;
+    FListaVisualizacao: TLIstaVisualizacao;
   public
     { Public declarations }
   end;
@@ -41,17 +50,36 @@ uses
   , UDialogo
   , UServico;
 
-procedure TFrmCriarServico.FormCreate(Sender: TObject);
-//var
-//  loSERVICO: TSERVICO;
-begin
-   FRepositorioServico := TRepositorioServico.Create;
+const
+CNT_SELECAO_PERSTADORES = 'select * from vw_servico';
 
-//  rgServico.Items.Clear;
-//  for loSERVICO in FRepositorioSERVICO.RetornaTodos do
-//  begin
-//    rgServico.Items.AddObject(loSERVICO.NOME, loSERVICO);
-//  end;
+
+  VW_PRESTADORES_ID_PRESTADOR  = 'id_prestador';
+  VW_PRESTADORES_ID_SERVICO    = 'id_servico';
+  VW_PRESTADORES_ID_VALOR      = 'id_valor';
+
+procedure TFrmCriarServico.btnAtualizaClick(Sender: TObject);
+begin
+
+  FListaVisualizacao.CarregaPesquisa(TOpcaoPesquisa.Create
+    .DefineSQL(CNT_SELECAO_PERSTADORES));
+end;
+
+procedure TFrmCriarServico.FormCreate(Sender: TObject);
+var
+  loSERVICO: TSERVICO;
+begin
+  FRepositorioServico := TRepositorioServico.Create;
+
+  for loSERVICO in FRepositorioSERVICO.RetornaTodos do
+  begin
+    cbxServico.AddItem(loSERVICO.SERVICO, loSERVICO);
+  end;
+end;
+
+procedure TFrmCriarServico.FormDestroy(Sender: TObject);
+begin
+   FreeAndNil(FRepositorioServico);
 end;
 
 end.

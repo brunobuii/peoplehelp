@@ -3388,35 +3388,7 @@ object FrmServico: TFrmServico
       TabOrder = 2
       Text = 'Selecione'
       Items.Strings = (
-        'Selecione'
-        'Encanador(a)'
-        'Eletricista'
-        'Marceneiro(a)'
-        'Pedreiro(a)'
-        'Jardineiro(a)'
-        'Domestica'
-        'Lavador de Carros'
-        'Cozinheiro(a)'
-        'Engenheiro(a)'
-        'Enfermeiro(a)'
-        'Bab'#225
-        'Motorista'
-        'Mec'#226'nico(a)'
-        'Eletricista de Ve'#237'culos'
-        'Contador(a)'
-        'Professor(a) de Ingl'#234's'
-        'Professor(a) de Alem'#227'o'
-        'Professor(a)'
-        'Veterin'#225'rio(a)'
-        'Arquiteto(a)'
-        'Personal Treiner'
-        'Qu'#237'mico'
-        'Conselheiro(a)'
-        'Psicologo(a)'
-        'Dentista'
-        'Passeador(a) de Animais'
-        'T'#233'cnico em informatica'
-        'Servi'#231'os Gerais')
+        'Selecione')
     end
     object btnPesqusiar: TButton
       Left = 56
@@ -3432,6 +3404,7 @@ object FrmServico: TFrmServico
       Top = 252
       Width = 145
       Height = 21
+      ItemIndex = 0
       TabOrder = 4
       Text = 'Selecione'
       Items.Strings = (

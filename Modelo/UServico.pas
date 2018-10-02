@@ -8,12 +8,12 @@ uses
 type
   TSERVICO = class(TENTIDADE)
   public
-    NOME: String;
+    SERVICO: String;
   end;
 
 const
-  TBL_SERVICO      = 'SERVICO';
-  FLD_SERVICO_NOME = 'NOME';
+  TBL_SERVICO         = 'SERVICO';
+  FLD_SERVICO_SERVICO = 'SERVICO';
 
 implementation
 

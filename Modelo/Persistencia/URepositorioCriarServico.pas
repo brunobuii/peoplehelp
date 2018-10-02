@@ -1,10 +1,9 @@
-unit URepositorioServico;
+unit URepositorioCriarServico;
 
 interface
 
 uses
     URepositorioDB
-  , UServico
   , SQLExpr;
 
 type
@@ -24,7 +23,7 @@ uses
   , UMensagens
   ;
 
-{ TRepositorioServico }
+{ TRepositorioCidade }
 
 constructor TRepositorioServico.Create;
 begin
@@ -36,17 +35,17 @@ begin
   inherited;
   with FSQLSelect do
   begin
-    coSERVICO.SERVICO:= FieldByName(FLD_SERVICO_SERVICO).AsString;
+    coSERVICO.NOME:= FieldByName(FLD_SERVICO_NOME).AsString;
   end;
 end;
 
-procedure TRepositorioServico.AtribuiEntidadeParaDB(const coSERVICO: TSERVICO;
+procedure TRepositorioServico.AtribuiEntidadeParaDB(const coCIDADE: TSERVICO;
   const coSQLQuery: TSQLQuery);
 begin
   inherited;
   with coSQLQuery do
   begin
-    ParamByName(FLD_SERVICO_SERVICO).AsString := coSERVICO.SERVICO;
+    ParamByName(FLD_SERVICO_NOME).AsString := coSERVICO.NOME;
   end;
 end;
 
